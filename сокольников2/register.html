@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <!-- создание регистрации -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+   <!-- добавление css ну или соединение-->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Шапка сайта и навигация -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <h1>БУКВАЕШКА</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="register.html">Регистрация</a></li>
+                    <li><a href="vhod.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Форма регистрации -->
+        <div class="container" style="margin-top:100px;max-width:400px;">
+            <h2 style="text-align:center;">Регистрация</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="fullName">ФИО</label>
+                    <!-- тут пишем фамилию имя отчество  -->
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <!--пишем емайл -->
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <!--пишем нномер телефона-->
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <!--пишем пароль к нашему сайту типо входа потом-->
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Зарегистрироваться</button>
+            </form>
+            <!--если регистрация успешно прошла выйдет зеленая надпись регистрация прошлааа-->
+            <div id="successMsg" style="display:none;color:green;text-align:center;margin-top:20px;">Регистрация прошла
+                успешно!</div>
+        </div>
+    </main>
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025.г Букваешка </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Обработка отправки формы регистрации
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Отменяем стандартное поведение формы
+            const user = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                password: document.getElementById('password').value
+            };
+            // Получаем текущих пользователей из localStorage
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            users.push(user); // Добавляем нового пользователя
+            localStorage.setItem('users', JSON.stringify(users)); // Сохраняем обратно
+            document.getElementById('registerForm').reset(); // Очищаем форму
+            document.getElementById('successMsg').style.display = 'block'; // Показываем сообщение об успехе
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+     
+    <meta charset="UTF-8">
+     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Личный кабинет</title>
+     
+    <link rel="stylesheet" href="styles.css">
+     
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+      <!-- Шапка сайта и навигация -->
+      <header class="header">
+            <div class="container">
+             <nav class="nav">
+                   <div class="logo">
+                    <h1>БУКВАЕШКА</h1>
+                       </div>
+                   <ul class="nav-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="register.html">Регистрация</a></li>
+                    <li><a href="vhod.html">Вход</a></li>
+                       </ul>
+                 </nav>
+                </div>
+          </header>
+      <main>
+            <!-- Данные пользователя -->
+            <div class="container" style="margin-top:100px;max-width:400px;">
+             <h2 style="text-align:center;">Личный кабинет</h2>
+             <div id="profileData" style="margin-bottom:30px;"></div>
+             <button id="logoutBtn" class="btn btn-primary" style="width:100%;">Выйти</button>
+                </div>
+          </main>
+      <!-- Футер -->
+      <footer class="footer">
+            <div class="container">
+             <div class="footer-content">
+                   <p>&copy; 2025.г Букваешка </p>
+                 </div>
+                </div>
+          </footer>
+     
+    <script>
+        // Получаем данные текущего пользователя из localStorage
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        if (!user) {
+            // Если пользователь не авторизован, перенаправляем на страницу входа
+            window.location.href = 'admin-login.html';
+        } else {
+            // Выводим данные пользователя в личном кабинете
+            document.getElementById('profileData').innerHTML = `
+   <p><b>ФИО:</b> ${user.fullName}</p>
+   <p><b>Email:</b> ${user.email}</p>
+   <p><b>Телефон:</b> ${user.phone}</p>
+ `;
+        }
+        // Кнопка выхода: удаляет пользователя из localStorage и возвращает на страницу входа
+        document.getElementById('logoutBtn').onclick = function () {
+            localStorage.removeItem('currentUser');
+            //перенаправление обратно в наш индекс ну или в главное меню
+            window.location.href = 'index.html';
+        };
+    </script>
+</body>
+
+</html>

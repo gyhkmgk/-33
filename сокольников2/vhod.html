@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Вход</title>
+    <!--соединение с css-->
+    <link rel="stylesheet" href="styles.css">
+    <!--опять же стиль шрифта-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+     <!-- Шапка сайта и навигация -->
+
+     <header class="header">
+         <div class="container">
+            <nav class="nav">
+                 <div class="logo">
+                     <h1>БУКВАЕШКА</h1>
+                     </div>
+                 <ul class="nav-links">
+                     <li><a href="index.html">Главная</a></li>
+                     <li><a href="register.html">Регистрация</a></li>
+                     <li><a href="vhod.html">Вход</a></li>
+                     </ul>
+            </nav>
+            
+        </div>
+         </header>
+     <main>
+         <!-- Форма входа -->
+         <div class="container" style="margin-top:100px;max-width:400px;">
+            <h2 style="text-align:center;">Вход</h2>
+            <form id="loginForm">
+                <!--регистрация-->
+                 <div class="form-group">
+                     <label for="email">Email</label>
+                     <input type="email" id="email" required>
+                     </div>
+                 <div class="form-group">
+                     <label for="password">Пароль</label>
+                     <input type="password" id="password" required>
+                     
+                     </div>
+                 <button type="submit" class="btn btn-primary" style="width:100%;">Войти</button>
+            </form>
+            <div id="errorMsg" style="display:none;color:red;text-align:center;margin-top:20px;">Неверный
+                email или пароль!</div>
+        </div>
+    </main>
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025.г Букваешка</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Обработка отправки формы входа
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Отменяем стандартное поведение формы
+            const email = document.getElementById('email').value; // Получаем email
+            const password = document.getElementById('password').value; // Получаем пароль
+            // Получаем всех пользователей из localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            // Ищем пользователя с совпадающим email и паролем
+            const user = users.find(u => u.email === email && u.password === password);
+            if (user) {
+                // Если пользователь найден, сохраняем его как текущего и переходим в личный кабинет
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                // перенаправление в личный кабинет
+                window.location.href = 'lichnycab.html';
+            } else {
+                // Если не найден — показываем сообщение об ошибке
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

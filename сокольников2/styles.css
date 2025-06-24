@@ -1,0 +1,152 @@
+/* Основные стили для страницы */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Шапка сайта */
+.header {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Контейнер для центрирования контента */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Навигация */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Блок с картинкой и приветствием */
+.hero {
+    height: 600px;
+    position: relative;
+    margin-top: 70px;
+    overflow: hidden;
+}
+
+/* Затемнение поверх картинки */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+/* Футер */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 40px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+/* Кнопки */
+.btn {
+    /* Компактная кнопка */
+    /* разрешение кнопки и разрешение текста кнопки */
+    padding: 14px 14px;
+    border: none;
+    /* округление кнопки типо углы */
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    /*размер текста*/
+    font-size: 14px;
+    display: inline-block;
+    /*отдаление кнопки место нахождение*/
+    margin-top: 10px;
+    text-decoration: none;
+    width: auto !important;
+    max-width: 200px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: #217dbb;
+}
+
+/* Стили для формы регистрации и авторизации */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+
